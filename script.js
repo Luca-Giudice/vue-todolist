@@ -4,13 +4,20 @@ const app = Vue.createApp({
     data() {
         return {
             newTask: '',
-            searchTeam: '',
+            searchTerm: '',
             tasks: [
                 'fare la spesa',
                 'lavare i capelli',
                 'comprare una marca da bollo',
                 'aggiornare il pc'
             ],
+        }
+        
+    },
+
+    computed: {
+        filterTasks() {
+            return this.tasks.filter(task => task.includes(this.searchTerm));
         }
     },
     methods: {
